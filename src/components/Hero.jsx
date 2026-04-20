@@ -7,7 +7,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="relative h-screen w-full overflow-hidden">
+      <div id="home" className="relative h-screen w-full overflow-hidden">
         {/* Background Image with Overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center animate-subtle-zoom"
@@ -105,35 +105,35 @@ const Hero = () => {
               <div className="lg:hidden mt-6 pb-4 space-y-4 text-center animate-fade-in">
                 <a
                   href="#home"
-                  className="block text-white hover:text-[#C8A96A] transition-colors text-sm"
+                  className="block text-white active:text-[#C8A96A] transition-colors text-sm py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Home
                 </a>
                 <a
                   href="#about"
-                  className="block text-white hover:text-[#C8A96A] transition-colors text-sm"
+                  className="block text-white active:text-[#C8A96A] transition-colors text-sm py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   About Us
                 </a>
                 <a
                   href="#rooms"
-                  className="block text-white hover:text-[#C8A96A] transition-colors text-sm"
+                  className="block text-white active:text-[#C8A96A] transition-colors text-sm py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Rooms
                 </a>
                 <a
                   href="#garden"
-                  className="block text-white hover:text-[#C8A96A] transition-colors text-sm"
+                  className="block text-white active:text-[#C8A96A] transition-colors text-sm py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Garden
                 </a>
                 <a
                   href="#contact"
-                  className="block text-white hover:text-[#C8A96A] transition-colors text-sm"
+                  className="block text-white active:text-[#C8A96A] transition-colors text-sm py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Contact
@@ -143,7 +143,7 @@ const Hero = () => {
                     setIsBookingOpen(true);
                     setIsMenuOpen(false);
                   }}
-                  className="border border-white/50 text-white px-6 py-2.5 rounded-md hover:bg-white hover:text-black transition-all duration-300 w-full max-w-xs mx-auto text-sm"
+                  className="border border-white/50 text-white px-6 py-2.5 rounded-md active:bg-white active:text-black transition-all duration-300 w-full max-w-xs mx-auto text-sm"
                 >
                   Reservation
                 </button>

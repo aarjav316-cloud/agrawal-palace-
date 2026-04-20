@@ -60,14 +60,6 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#pool"
-                  className="text-gray-400 hover:text-[#C8A96A] transition-colors"
-                >
-                  Pool & Recreation
-                </a>
-              </li>
-              <li>
-                <a
                   href="#concierge"
                   className="text-gray-400 hover:text-[#C8A96A] transition-colors"
                 >
@@ -85,27 +77,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div id="contact">
             <h4 className="text-sm tracking-[0.2em] uppercase mb-6 text-gray-300">
               Contact
             </h4>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li>123 Luxury Avenue</li>
-              <li>City Center, ST 12345</li>
+              <li>Near Railway Station Ashoknagar</li>
               <li className="pt-2">
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+919755598222"
                   className="hover:text-[#C8A96A] transition-colors"
                 >
-                  +1 (234) 567-890
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@agrawalpalace.com"
-                  className="hover:text-[#C8A96A] transition-colors"
-                >
-                  info@agrawalpalace.com
+                  +91 9755598222
                 </a>
               </li>
             </ul>

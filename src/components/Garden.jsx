@@ -17,6 +17,7 @@ const Garden = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
+  const mobileScrollRef = useRef(null);
 
   const images = [
     { src: exterior1, alt: "Hotel Exterior" },
@@ -33,8 +34,34 @@ const Garden = () => {
   const infiniteImages = [...images, ...images, ...images];
   const centerOffset = images.length; // Start at middle set
 
+  // Mobile scroll snap handler
   useEffect(() => {
-    if (!containerRef.current) return;
+    const handleMobileScroll = () => {
+      if (!mobileScrollRef.current || window.innerWidth >= 768) return;
+
+      const scrollLeft = mobileScrollRef.current.scrollLeft;
+      const itemWidth = mobileScrollRef.current.offsetWidth;
+      const newIndex = Math.round(scrollLeft / itemWidth);
+
+      if (
+        newIndex !== activeIndex &&
+        newIndex >= 0 &&
+        newIndex < images.length
+      ) {
+        setActiveIndex(newIndex);
+      }
+    };
+
+    const scrollContainer = mobileScrollRef.current;
+    if (scrollContainer) {
+      scrollContainer.addEventListener("scroll", handleMobileScroll);
+      return () =>
+        scrollContainer.removeEventListener("scroll", handleMobileScroll);
+    }
+  }, [activeIndex, images.length]);
+
+  useEffect(() => {
+    if (!containerRef.current || window.innerWidth < 768) return;
 
     const isMobile = window.innerWidth < 768;
     const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
@@ -134,99 +161,97 @@ const Garden = () => {
             Garden Gallery
           </h2>
 
-          {/* 3D Coverflow Container */}
-          <div
-            ref={containerRef}
-            className="relative h-[500px] md:h-[600px] flex items-center justify-center"
-            style={{
-              perspective: "2000px",
-              perspectiveOrigin: "center center",
-            }}
-          >
-            {infiniteImages.map((image, index) => (
-              <div
-                key={`${index}-${image.alt}`}
-                ref={(el) => (cardsRef.current[index] = el)}
-                onClick={() => {
-                  const realIndex = index % images.length;
-                  if (index === activeIndex + centerOffset) {
-                    openLightbox(realIndex);
-                  } else {
-                    // Calculate shortest path to clicked image
-                    const clickedPosition = index - centerOffset;
-                    setActiveIndex(clickedPosition);
-                  }
-                }}
-                className="absolute cursor-pointer will-change-transform"
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-              >
+          {/* Mobile Gallery - Clean Scroll Snap */}
+          <div className="md:hidden">
+            <div
+              ref={mobileScrollRef}
+              className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-4 px-4 pb-4"
+              style={{
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
+              {images.map((image, index) => (
                 <div
-                  className={`relative overflow-hidden rounded-2xl ${
-                    index === activeIndex + centerOffset
-                      ? "shadow-2xl"
-                      : "shadow-lg hover:shadow-xl"
-                  } transition-shadow duration-300`}
-                  style={{
-                    width: "350px",
-                    height: "450px",
-                  }}
+                  key={index}
+                  className="flex-shrink-0 w-full snap-center"
+                  onClick={() => openLightbox(index)}
                 >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent ${
-                      index === activeIndex + centerOffset
-                        ? "opacity-100"
-                        : "opacity-0"
-                    } transition-opacity duration-300`}
-                  >
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <p className="text-white text-xl font-medium">
-                        {image.alt}
-                      </p>
+                  <div className="relative overflow-hidden rounded-2xl shadow-xl mx-auto max-w-sm">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-80 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <p className="text-white text-lg font-medium">
+                          {image.alt}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-center gap-6 mt-12">
-            <button
-              onClick={handlePrevious}
-              className="w-12 h-12 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-all duration-300"
-            >
-              ‹
-            </button>
-
-            <div className="flex gap-2">
+            {/* Mobile Navigation Dots */}
+            <div className="flex justify-center gap-2 mt-6">
               {images.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    const scrollContainer = mobileScrollRef.current;
+                    if (scrollContainer) {
+                      scrollContainer.scrollTo({
+                        left: index * scrollContainer.offsetWidth,
+                        behavior: "smooth",
+                      });
+                    }
+                  }}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    Math.abs(activeIndex % images.length) === index
+                    index === activeIndex
                       ? "w-8 bg-gray-800"
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
+                      : "w-2 bg-gray-300"
                   }`}
                 />
               ))}
             </div>
-
-            <button
-              onClick={handleNext}
-              className="w-12 h-12 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-700 transition-all duration-300"
-            >
-              ›
-            </button>
           </div>
+
+          {/* Desktop Gallery - Clean Grid Layout */}
+          <div className="hidden md:block">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  onClick={() => openLightbox(index)}
+                  className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-72 lg:h-80 object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-6 left-6 right-6">
+                      <p className="text-white text-xl font-medium">
+                        {image.alt}
+                      </p>
+                      <p className="text-white/80 text-sm mt-1">
+                        Click to view full size
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Controls - Removed for cleaner design */}
+          {/* Navigation Controls - Removed for cleaner design */}
         </div>
       </section>
 
