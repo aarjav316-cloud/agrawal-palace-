@@ -1,4 +1,5 @@
 import Hero from "./components/Hero";
+import BanquetSection from "./components/BanquetSection";
 import AboutUs from "./components/AboutUs";
 import Stats from "./components/Stats";
 import Garden from "./components/Garden";
@@ -10,6 +11,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <Hero />
+      <BanquetSection />
       <AboutUs />
       <Stats />
       <Garden />

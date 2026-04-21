@@ -177,14 +177,14 @@ const Hero = () => {
 
             {/* Main Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-serif leading-tight mb-6 sm:mb-8 drop-shadow-2xl px-4">
-              Best Banquet Hall in Ashoknagar for Weddings & Events
+              Luxury Hotel Rooms in Ashoknagar for Comfortable Stay
             </h1>
 
             {/* Description */}
             <p className="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 px-4 max-w-3xl mx-auto">
-              Agrawal Palace is a premium banquet hall in Ashoknagar offering
-              wedding venues, party halls, and event spaces with modern
-              facilities. Ideal for weddings, receptions, and celebrations.
+              Agrawal Palace is a premium hotel in Ashoknagar offering modern
+              rooms, excellent service, and a peaceful stay. Perfect for
+              families, travelers, and guests visiting the city.
             </p>
 
             {/* CTA Button */}
