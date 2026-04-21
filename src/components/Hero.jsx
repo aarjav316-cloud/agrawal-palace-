@@ -177,11 +177,15 @@ const Hero = () => {
 
             {/* Main Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-serif leading-tight mb-6 sm:mb-8 drop-shadow-2xl px-4">
-              Welcome to Our Luxurious
-              <br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>
-              Hotel & Resort
+              Best Banquet Hall in Ashoknagar for Weddings & Events
             </h1>
+
+            {/* Description */}
+            <p className="text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 px-4 max-w-3xl mx-auto">
+              Agrawal Palace is a premium banquet hall in Ashoknagar offering
+              wedding venues, party halls, and event spaces with modern
+              facilities. Ideal for weddings, receptions, and celebrations.
+            </p>
 
             {/* CTA Button */}
             <button
