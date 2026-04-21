@@ -62,9 +62,9 @@ const RoomsGallery = () => {
 
   return (
     <>
-      <section id="rooms" className="py-24 md:py-32 bg-white overflow-hidden">
+      <section id="rooms" className="py-12 md:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center text-gray-800 mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center text-gray-800 mb-12">
             Our Rooms
           </h2>
 

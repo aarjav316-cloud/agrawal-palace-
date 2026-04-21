@@ -2,9 +2,9 @@ import garden2 from "../assets/garden2.jpeg";
 
 const AboutUs = () => {
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#f8f8f8]">
+    <section id="about" className="py-10 md:py-14 bg-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           {/* Left Side - Image */}
           <div className="relative group animate-fade-in-left">
             <div className="relative overflow-hidden rounded-xl shadow-md">
@@ -19,15 +19,15 @@ const AboutUs = () => {
 
           {/* Right Side - Content */}
           <div className="animate-fade-in-right">
-            <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#C8A96A] mb-6 font-medium">
+            <p className="text-xs md:text-sm tracking-[0.3em] uppercase text-[#C8A96A] mb-4 font-medium">
               About Us
             </p>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-8 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-800 mb-6 leading-tight">
               Experience Timeless Luxury at Agrawal Palace
             </h2>
 
-            <div className="space-y-6 max-w-xl text-gray-600 leading-relaxed">
+            <div className="space-y-4 max-w-xl text-gray-600 leading-relaxed">
               <p>
                 Nestled in the heart of elegance, Agrawal Palace offers an
                 unparalleled experience of
@@ -57,10 +57,6 @@ const AboutUs = () => {
                 are made and dreams come to life.
               </p>
             </div>
-
-            <button className="mt-10 border-2 border-black text-black px-8 py-3 rounded-md text-sm tracking-wider uppercase font-medium hover:bg-black hover:text-white transition-all duration-300">
-              Know More
-            </button>
           </div>
         </div>
       </div>

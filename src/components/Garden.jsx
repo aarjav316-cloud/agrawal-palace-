@@ -154,10 +154,10 @@ const Garden = () => {
     <>
       <section
         id="garden"
-        className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
+        className="py-12 md:py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-6 md:px-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center text-gray-800 mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-center text-gray-800 mb-12">
             Garden Gallery
           </h2>
 

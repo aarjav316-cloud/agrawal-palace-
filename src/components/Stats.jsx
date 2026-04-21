@@ -6,7 +6,7 @@ const Stats = () => {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-[#f8f8f8]">
+    <section className="py-12 md:py-16 bg-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-6 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
           {stats.map((stat, index) => (
